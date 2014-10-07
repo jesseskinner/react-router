@@ -34,7 +34,7 @@ var App = React.createClass({
           <li><Link to="about">About</Link></li>
           <li><Link to="dashboard">Dashboard</Link> (authenticated)</li>
         </ul>
-        {this.props.activeRouteHandler()}
+        <this.props.activeRouteHandler />
       </div>
     );
   }
@@ -67,6 +67,8 @@ var Dashboard = React.createClass({
 });
 
 var Login = React.createClass({
+  mixins: [ Router.Navigation ],
+
   statics: {
     attemptedTransition: null
   },
@@ -90,7 +92,7 @@ var Login = React.createClass({
         Login.attemptedTransition = null;
         transition.retry();
       } else {
-        Router.replaceWith('/about');
+        this.replaceWith('/about');
       }
     }.bind(this));
   },

@@ -1,3 +1,47 @@
+v0.9.1 - Mon, 06 Oct 2014 20:55:32 GMT
+--------------------------------------
+
+- [76fe696](../../commit/76fe696) [fixed] trailing comma
+
+
+v0.9.0 - Mon, 06 Oct 2014 19:37:27 GMT
+--------------------------------------
+
+- [5aae2a8](../../commit/5aae2a8) [added] onChange event to Routes
+- [ba65269](../../commit/ba65269) [removed] AsyncState
+- [4d8c7a1](../../commit/4d8c7a1) [removed] `<Routes onTransitionError>`
+- [4d8c7a1](../../commit/4d8c7a1) [removed] `<Routes onAbortedTransition>`
+- [ed0cf62](../../commit/ed0cf62) [added] Navigation mixin for components that need to modify the URL
+- [ed0cf62](../../commit/ed0cf62) [added] CurrentPath mixin for components that need to know the current URL path
+- [ed0cf62](../../commit/ed0cf62) [added] getActiveRoutes, getActiveParams, and getActiveQuery methods to ActiveState mixin
+- [ed0cf62](../../commit/ed0cf62) [removed] Awkward updateActiveState callback from ActiveState mixin
+- [ed0cf62](../../commit/ed0cf62) [removed] Router.PathState (use Router.CurrentPath instead)
+- [ed0cf62](../../commit/ed0cf62) [removed] Router.Transitions (use Router.Navigation instead)
+- [ed0cf62](../../commit/ed0cf62) [removed] Router.RouteLookup (because it was useless)
+- [ed0cf62](../../commit/ed0cf62) [added] `<Routes scrollBehavior="browser">` alias of "imitateBrowser"
+- [ed0cf62](../../commit/ed0cf62) [changed] `<Routes fixedPath>` => `<Routes initialPath>` will be useful for SSR
+
+
+v0.8.0 - Sat, 04 Oct 2014 05:39:02 GMT
+--------------------------------------
+
+- [d2aa7cb](../../commit/d2aa7cb) [added] `<Routes location="none">`
+- [637c0ac](../../commit/637c0ac) [added] `<Routes fixedPath>`
+- [f2bf4bd](../../commit/f2bf4bd) [removed] RouteStore
+- [f2bf4bd](../../commit/f2bf4bd) [added] Router.PathState for keeping track of the current URL path
+- [f2bf4bd](../../commit/f2bf4bd) [added] Router.RouteLookup for looking up routes
+- [f2bf4bd](../../commit/f2bf4bd) [added] Router.Transitions for transitioning to other routes
+- [f2bf4bd](../../commit/f2bf4bd) [added] Pluggable scroll behaviors
+- [f2bf4bd](../../commit/f2bf4bd) [changed] `<Routes preserveScrollPosition>` => `<Routes scrollBehavior>`
+- [f2bf4bd](../../commit/f2bf4bd) [removed] `<Route preserveScrollPosition>`
+- [f2bf4bd](../../commit/f2bf4bd) [removed] Router.transitionTo, Router.replaceWith, Router.goBack
+- [97dbf2d](../../commit/97dbf2d) [added] transition.wait(promise)
+- [3787179](../../commit/3787179) [changed] Transition retry now uses replaceWith.
+- [e0b708f](../../commit/e0b708f) [added] Ability to transitionTo absolute URLs
+- [c1493b5](../../commit/c1493b5) [changed] #259 support dots in named params
+- [a4ce7c8](../../commit/a4ce7c8) [changed] isActive is an instance method
+- [a4ce7c8](../../commit/a4ce7c8) [removed] `<Routes onActiveStateChange>`
+
 v0.7.0 - Tue, 02 Sep 2014 16:42:28 GMT
 --------------------------------------
 

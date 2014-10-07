@@ -6,6 +6,9 @@ var Routes = Router.Routes;
 var Link = Router.Link;
 
 var App = React.createClass({
+
+  mixins: [ Router.Navigation ],
+
   getInitialState: function() {
     return {
       tacos: [
@@ -28,7 +31,7 @@ var App = React.createClass({
       return taco.name != removedTaco;
     });
     this.setState({tacos: tacos});
-    Router.transitionTo('/');
+    this.transitionTo('/');
   },
 
   render: function() {
@@ -42,7 +45,7 @@ var App = React.createClass({
           {links}
         </ul>
         <div className="Detail">
-          {this.props.activeRouteHandler({onRemoveTaco: this.handleRemoveTaco})}
+          <this.props.activeRouteHandler onRemoveTaco={this.handleRemoveTaco} />
         </div>
       </div>
     );

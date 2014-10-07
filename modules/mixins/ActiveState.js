@@ -1,74 +1,45 @@
 var React = require('react');
-var ActiveDelegate = require('./ActiveDelegate');
 
 /**
- * A mixin for components that need to know about the routes, params,
- * and query that are currently active. Components that use it get two
- * things:
- *
- *   1. An `updateActiveState` method that is called when the
- *      active state changes.
- *   2. An `isActive` method they can use to check if a route,
- *      params, and query are active.
- *
- *
- * Example:
- *
- *   var Tab = React.createClass({
- *     
- *     mixins: [ Router.ActiveState ],
- *
- *     getInitialState: function () {
- *       return {
- *         isActive: false
- *       };
- *     },
- *   
- *     updateActiveState: function () {
- *       this.setState({
- *         isActive: this.isActive(routeName, params, query)
- *       })
- *     }
- *   
- *   });
+ * A mixin for components that need to know the routes, URL
+ * params and query that are currently active.
  */
 var ActiveState = {
 
   contextTypes: {
-    activeDelegate: React.PropTypes.any.isRequired
+    activeRoutes: React.PropTypes.array.isRequired,
+    activeParams: React.PropTypes.object.isRequired,
+    activeQuery: React.PropTypes.object.isRequired,
+    isActive: React.PropTypes.func.isRequired
   },
 
   /**
-   * Returns this component's ActiveDelegate component.
+   * Returns an array of the routes that are currently active.
    */
-  getActiveDelegate: function () {
-    return this.context.activeDelegate;
-  },
-
-  componentWillMount: function () {
-    if (this.updateActiveState)
-      this.updateActiveState();
-  },
-
-  componentDidMount: function () {
-    this.getActiveDelegate().addChangeListener(this.handleActiveStateChange);
-  },
-
-  componentWillUnmount: function () {
-    this.getActiveDelegate().removeChangeListener(this.handleActiveStateChange);
-  },
-
-  handleActiveStateChange: function () {
-    if (this.isMounted() && this.updateActiveState)
-      this.updateActiveState();
+  getActiveRoutes: function () {
+    return this.context.activeRoutes;
   },
 
   /**
-   * Returns true if the route with the given name, URL parameters, and
-   * query are all currently active.
+   * Returns an object of the URL params that are currently active.
    */
-  isActive: function (routeName, params, query) {
-    return this.getActiveDelegate().isActive(routeName, params, query);
+  getActiveParams: function () {
+    return this.context.activeParams;
+  },
+
+  /**
+   * Returns an object of the query params that are currently active.
+   */
+  getActiveQuery: function () {
+    return this.context.activeQuery;
+  },
+
+  /**
+   * A helper method to determine if a given route, params, and query
+   * are active.
+   */
+  isActive: function (to, params, query) {
+    return this.context.isActive(to, params, query);
   }
 
 };
